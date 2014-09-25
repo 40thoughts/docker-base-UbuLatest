@@ -18,8 +18,8 @@ RUN DEBIAN_FRONTEND=noninteractive apt-get -y upgrade
 # add some packages just by typing their names in the end of the line separated by spaces.
 # avoid some by removing their names.
 # 
-# don't remove anything before `nano` (this is the command line used to install packages).
-# for those who knows a little bit about linux, you may ask about `DEBIAN_FRONTEND=noninteractive`;
+# don't remove anything before `nano`, this is the command line used to install packages.
+# for those who know a little bit about linux, you may ask about `DEBIAN_FRONTEND=noninteractive`;
 # this is used to avoid these ugly red warnings during the `apt-get install` process.
 ####
 RUN DEBIAN_FRONTEND=noninteractive apt-get install -y nano wget htop

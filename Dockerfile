@@ -8,8 +8,8 @@ MAINTAINER crazyBUD
 
 # just change the values to `en_US`, `en_EN`, `de_DE` or whatever you need according to your system.
 RUN locale-gen fr_FR.UTF-8
-ENV LANG fr_FR.UTF-8  
-ENV LANGUAGE fr_FR:fr  
+ENV LANG fr_FR.UTF-8
+ENV LANGUAGE fr_FR:fr
 ENV LC_ALL fr_FR.UTF-8
 
 # Take image up to date
@@ -33,7 +33,7 @@ RUN DEBIAN_FRONTEND=noninteractive add-apt-repository "deb http://archive.ubuntu
 # here I added `nano`,`wget`, `htop` and `supervisor`.
 # add some packages just by typing their names in the end of the line separated by spaces.
 # avoid some by removing their names.
-# 
+#
 # everything typed before `nano` is a part from the command line used to install packages, so please, DON'T REMOVE/ALTER IT.
 # for those who know a little bit about linux, you may ask about `DEBIAN_FRONTEND=noninteractive`;
 # this is used to avoid these ugly red warnings during the `apt-get install` process.

@@ -30,7 +30,7 @@ RUN DEBIAN_FRONTEND=noninteractive add-apt-repository "deb http://archive.ubuntu
 # Add some extra utils you need/like
 ####################################
 
-# here I added `nano`,`wget`, `htop` and `supervisor`.
+# here I added `nano`, `wget`, `htop` and `supervisor`.
 # add some packages just by typing their names in the end of the line separated by spaces.
 # avoid some by removing their names.
 #
@@ -46,16 +46,6 @@ RUN DEBIAN_FRONTEND=noninteractive apt-get install -yq nano wget htop supervisor
 
 # add the configuration file
 ADD .supervisor.conf /etc/supervisor.conf
-
-# Configure "noboby's home"
-###########################
-
-# create user's home directory
-RUN mkdir -p /home/nobody
-
-# set the permissions
-RUN chown -R nobody:users /home/nobody
-RUN chmod -R 775 /home/nobody
 
 # Lighten the image if possible
 ###############################

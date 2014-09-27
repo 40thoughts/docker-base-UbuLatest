@@ -14,8 +14,7 @@ ENV LC_ALL fr_FR.UTF-8
 
 # Take image up to date
 #######################
-RUN apt-get update
-RUN DEBIAN_FRONTEND=noninteractive apt-get dist-upgrade -yq
+RUN apt-get update && DEBIAN_FRONTEND=noninteractive apt-get dist-upgrade -yq
 
 # Add the multiverse repository
 ###############################
@@ -24,8 +23,7 @@ RUN DEBIAN_FRONTEND=noninteractive apt-get dist-upgrade -yq
 RUN DEBIAN_FRONTEND=noninteractive apt-get install -yq software-properties-common
 
 # insert repository
-RUN DEBIAN_FRONTEND=noninteractive add-apt-repository "deb http://archive.ubuntu.com/ubuntu/ $(lsb_release -sc) universe multiverse"
-RUN DEBIAN_FRONTEND=noninteractive add-apt-repository "deb http://archive.ubuntu.com/ubuntu/ $(lsb_release -sc)-updates universe multiverse"
+RUN DEBIAN_FRONTEND=noninteractive add-apt-repository "deb http://archive.ubuntu.com/ubuntu/ $(lsb_release -sc) universe multiverse" && DEBIAN_FRONTEND=noninteractive add-apt-repository "deb http://archive.ubuntu.com/ubuntu/ $(lsb_release -sc)-updates universe multiverse"
 
 # Add some extra utils you need/like
 ####################################
@@ -38,8 +36,7 @@ RUN DEBIAN_FRONTEND=noninteractive add-apt-repository "deb http://archive.ubuntu
 # for those who know a little bit about linux, you may ask about `DEBIAN_FRONTEND=noninteractive`;
 # this is used to avoid these ugly red warnings during the `apt-get install` process.
 ####
-RUN apt-get update
-RUN DEBIAN_FRONTEND=noninteractive apt-get install -yq nano wget htop supervisor
+RUN apt-get update && DEBIAN_FRONTEND=noninteractive apt-get install -yq nano wget htop supervisor
 
 # Configure `supervisor`
 ########################
@@ -49,5 +46,4 @@ ADD .supervisor.conf /etc/supervisor.conf
 
 # Lighten the image if possible
 ###############################
-RUN apt-get clean
-RUN rm -rf /tmp/*
+RUN apt-get clean && rm -rf /tmp/*

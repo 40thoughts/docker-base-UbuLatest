@@ -42,7 +42,16 @@ RUN apt-get update && DEBIAN_FRONTEND=noninteractive apt-get install -yq nano wg
 ########################
 
 # add the configuration file
-ADD .supervisor.conf /etc/supervisor.conf
+ADD https://raw.githubusercontent.com/40thoughts/docker-base-UbuLatest/master/.supervisor.conf /etc/supervisor.conf
+
+# Build default filesystem
+##########################
+
+# map /root/config to host's defined config path (used to store the configuration from this container)
+VOLUME /root/config
+
+# map /root/data to host defined data path (used to store data from this container)
+VOLUME /root/data
 
 # Lighten the image if possible
 ###############################

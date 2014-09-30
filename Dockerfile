@@ -47,11 +47,8 @@ ADD https://raw.githubusercontent.com/40thoughts/docker-base-UbuLatest/master/.s
 # Build default filesystem
 ##########################
 
-# map /root/config to host's defined config path (used to store the configuration from this container)
-VOLUME /root/config
-
-# map /root/data to host defined data path (used to store data from this container)
-VOLUME /root/data
+# map /config and /data to host's defined paths (used to store the configuration and data from this container)
+VOLUME ["/config", "/data"]
 
 # Lighten the image if possible
 ###############################
